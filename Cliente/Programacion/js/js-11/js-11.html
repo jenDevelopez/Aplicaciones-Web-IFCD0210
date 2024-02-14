@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS 11</title>
+
+  <style>
+    div{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+    }
+
+    table{
+      border-collapse: collapse;
+      margin: 2rem auto;
+    }
+    th,td{
+      border: 1px solid black;
+      padding: 10px;
+      text-align: center;
+    }
+    td{
+      height: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    input{
+      width: 100px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+  <label for="">Introduce cuatro numeros</label>
+    <input id="num1" type="text">
+    <input id="num2" type="text">
+    <input id="num3" type="text">
+    <input id="num4" type="text">
+    <button onclick="ordenarNumeros()">Ordenar de mayor a menor</button>
+  </div>
+
+  <table>
+    <tr>
+      <th>
+        Numero mayor
+      </th>
+      <th>
+        Numero menor
+      </th>
+      
+    </tr>
+    <tr>
+      <td id="mayor"></td>
+      <td id="menor"></td>
+    </tr>
+  </table>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+nav {
+    width: 60%;
+    margin: 0 auto;
+    overflow: auto;
+    margin-top: 2rem;
+}
+
+ul.menu{
+    list-style-type: none;
+    background: #f4f4f4;
+}
+ 
+ul.menu li {
+    width: 25%;
+    float: left;
+}
+
+ul.menu li a {
+    color: #333;
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    background-color: #84137F;
+    border: 1px solid grey;
+    color: #f4f4f4;
+    text-align: center;
+}
+
+ul.menu li:hover a{
+    background-color: #FF2DFE;
+
+}
+
+

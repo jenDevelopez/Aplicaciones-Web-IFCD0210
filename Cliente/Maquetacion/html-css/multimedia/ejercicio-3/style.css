@@ -1,0 +1,32 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+table{
+  width: 600px;
+  height: 200px;
+  border-collapse: collapse;
+}
+
+.container{
+display: grid;
+place-items: center;
+height: 100vh;
+}
+td{
+  padding-left: .5rem;
+}
+td:first-child{
+  border-right: 2px solid white;
+}
+tr:nth-child(odd){
+  background-color: grey;
+  color: white;
+}
+
+tr:nth-child(even){
+  background-color: #ccc;
+  color: grey;
+}

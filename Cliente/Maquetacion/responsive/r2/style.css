@@ -1,0 +1,45 @@
+*{ 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.image {
+  background-image: url('./img/descarga.jpg');
+  background-position: left;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 20vh;
+}
+
+.container-text {
+  padding: 1rem;
+}
+p{
+  margin-bottom:1rem;
+}
+
+@media(width >= 768px) {
+  .image {
+    height: 40vh;
+  }
+
+  .container-text{
+    column-count: 2;
+    column-rule: 5px solid green;
+  }
+
+  p{
+    margin-left: .5rem;
+  }
+}
+
+@media (width >= 1200px){
+  .image {
+    height: 50vh;
+  }
+
+  .container-text {
+    column-count: 3;
+  }
+}

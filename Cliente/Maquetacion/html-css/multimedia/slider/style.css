@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  overflow:hidden;
+
+
+}
+.fotos{
+  display: flex;
+
+}
+ figure {
+  width: 100%;
+  position: absolute;
+  left:0;
+
+}
+img {
+  width: 100%;
+  height: auto;
+}
+
+#foto-1{
+  z-index: 4;
+  animation-name: slider;
+  animation-delay: 1;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+#foto-2{
+  z-index: 3;
+  animation-name: slider;
+  animation-delay: 6s;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+
+}
+
+#foto-3{
+  z-index: 2;
+  animation-name: slider;
+  animation-delay: 11s;
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+}
+
+#foto-4{
+  z-index: 1;
+}
+@keyframes slider{
+  0%{
+    left: 0;
+
+  }
+  100%{
+   left: -100%;
+  }
+}

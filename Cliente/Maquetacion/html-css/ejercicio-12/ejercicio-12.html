@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Formulario | Ejercicio 12</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <form action="#" method="post">
+        <div>
+          <label for="nombre-y-apellidos">Nombre y Apellidos*</label>
+          <input
+            id="nombre-y-apellidos"
+            name="nombre-y-apellidos"
+            type="text"
+            required
+          />
+        </div>
+        <div>
+          <label for="email">Email*</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div>
+          <label for="telefono">Telefono*</label>
+          <input id="telefono" name="telefono" type="tel" required />
+        </div>
+        <div>
+          <label for="provincia">Provincia</label>
+          <input id="provincia" name="provincia" type="text" />
+        </div>
+        <div>
+          <label for="consulta">Consulta</label>
+          <textarea name="consulta" id="consulta" cols="35" rows="7"></textarea>
+        </div>
+        <div>
+          <label for="conocido">¿Cómo nos has conocido?</label>
+          <select id="conicido" name="conocido">
+            <option value=""></option>
+            <option value="msn">MSN</option>
+            <option value="aprendemas">Aprendemas</option>
+            <option value="yahoo">Yahoo</option>
+            <option value="formazion">Formazion.com</option>
+            <option value="google">Google</option>
+            <option value="tecnosaber">Tecnosaber</option>
+            <option value="infocurso">Infocurso</option>
+          </select>
+        </div>
+        <div>
+          <p>Navegador</p>
+          <div>
+            <div>
+              <input type="radio" name="navegador" id="chrome" />
+              <label for="chrome">Chrome</label>
+            </div>
+            <div>
+              <input type="radio" name="navegador" id="firefox" />
+              <label for="firefox">Firefox</label>
+            </div>
+            <div>
+              <input type="radio" name="navegador" id="safari" />
+              <label for="safari">Safari</label>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <button type="reset">Reinciar</button>
+            <button type="submit">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

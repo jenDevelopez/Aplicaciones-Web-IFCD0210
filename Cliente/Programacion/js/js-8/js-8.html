@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Jennifer Lopez Montero">
+  <meta name="description" content="Ejercicio 8 de Javascript">
+  <title>Calcular DNI</title>
+  <style>
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <form action="">
+    <div>
+      <label for="numDni">Indica tu numero de DNI(sin letra)</label>
+      <input type="text" id="numDni">
+    </div>
+    <div>
+      <label for="letraDni">Indica tu letra del DNI</label>
+      <input type="text" id="letraDni">
+    </div>
+    <button onclick="verificarDni(event)">Verificar DNI</button>
+  </form>
+  <p id="error" class="error"></p>
+  <p id="respuesta"></p>
+
+  <script src="./index.js"></script>
+</body>
+
+</html>

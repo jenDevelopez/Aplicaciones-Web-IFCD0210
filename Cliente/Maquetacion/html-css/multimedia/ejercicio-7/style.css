@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* 
+figure {
+  width: 100px;
+  margin: auto;
+}
+
+@media (width >= 768) {
+  figure {
+    margin-left: 200px;
+    transition: all 5s ease-in;
+    position: relative;
+    left: 0;
+    top: 0;
+    margin-top: 1rem;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  :target{
+    transform: scale(200%);
+    left: 500px;
+    top: 500px;
+  }
+} */
+section{
+  margin-top: 2rem;
+}
+figure {
+  width: 100px;
+  margin: auto;
+  transition: all 5s ease-in;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+:target{
+  transform: scale(200%);
+  left: 500px;
+  top: 500px;
+}

@@ -1,0 +1,41 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form{
+  width: 300px;
+  height: 120px;
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: .5rem;
+  animation: neon 5s linear infinite;
+  
+}
+form > div{
+  margin-bottom: 15px;
+}
+label{
+  margin-right: 5px;
+}
+
+@keyframes neon {
+  0%{
+    box-shadow: 0 0 20px red;
+  }
+  50%{
+    box-shadow: none;
+  }
+  100%{
+    box-shadow: 0 0 20px red;
+  }
+}

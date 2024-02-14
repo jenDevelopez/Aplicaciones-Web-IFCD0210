@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+
+  <title>Ejercicio 3</title>
+</head>
+<body id="inicio">
+  <h1>Ejercicio 3</h1>
+  <a href="../../index.html" class="home">Ir a Inicio</a>
+  <nav>
+    <ul>
+      <li><a href="#parte-1">Parte 1</a></li>
+      <li><a href="#parte-2">Parte 2</a></li>
+      <li><a href="#parte-3">Parte 3</a></li>
+      <li><a href="#parte-4">Parte 4</a></li>
+    </ul>
+  </nav>
+
+  <h2 id="parte-1">Parte 1</h2>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium dolores ab, accusamus illum impedit, minus est quia veritatis, dolor tenetur unde fugiat aperiam officiis odio. Explicabo quia reprehenderit incidunt accusamus sequi fuga mollitia placeat magni quam iusto itaque quos ea porro non consequatur vitae laboriosam, ex dolores voluptas molestiae tempore. Consequuntur incidunt corrupti, exercitationem ad nam suscipit accusamus necessitatibus itaque voluptas. Ad atque temporibus ipsam perspiciatis, voluptatibus sed? Accusamus eius laborum laboriosam eveniet ea vel unde, error ipsam vero iste distinctio excepturi dolore fugit non cupiditate molestiae quibusdam ad veritatis dolorem voluptatibus. Aspernatur, quasi sapiente odit aliquam mollitia dolore id neque natus dolorum rem nihil, nisi culpa quos libero rerum eius vitae earum itaque perspiciatis consectetur molestiae explicabo. 
+  </p>
+
+  <h2 id="parte-2">Parte 2</h2>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio voluptatibus, quod totam repellat accusantium rem delectus voluptatem enim quae laboriosam blanditiis, dolor maiores, provident aspernatur reprehenderit dolores natus! Quibusdam at alias, blanditiis, quasi quis eius dolorem repudiandae necessitatibus quidem, culpa exercitationem autem magni excepturi neque ipsum quisquam praesentium maiores. Id porro distinctio voluptate. Vitae eligendi eveniet totam ipsam deleniti debitis corporis, repellat nihil eum nobis ratione veritatis eos. Officia repellat est odio libero laudantium quae corporis quis? Saepe sed facere dolor? Repellat est ab deleniti error nostrum? Suscipit vel assumenda beatae temporibus quod accusantium in facere reprehenderit quaerat magnam. Est amet fugiat quas voluptates sed, nisi vel maxime consequatur quis reprehenderit molestias? Numquam iusto explicabo enim doloribus eum ipsum rem quo molestiae, odit atque fugiat, nihil officia possimus veniam, fuga culpa dolor perspiciatis unde ut hic dolores velit! 
+  </p>
+
+  <h2 id="parte-3">Parte 3</h2>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit numquam perspiciatis sapiente ipsa, nobis labore placeat non similique in sequi quia sed unde dolore voluptate vero nesciunt dolores obcaecati eaque architecto quibusdam. Est ducimus dolorum dignissimos minus velit assumenda iusto cupiditate ratione, eveniet molestiae et repellat, deserunt laboriosam odit. A corrupti nihil fugit sed quod, ducimus in velit aliquid iste aliquam incidunt amet nisi fugiat unde saepe quos exercitationem accusantium veritatis pariatur enim soluta, magnam laboriosam! Commodi, laboriosam ad corrupti aspernatur, et porro vero temporibus asperiores distinctio maiores rerum sint voluptates reprehenderit, ea consequatur ab dolores accusantium? Molestias, minima voluptatum. Sequi commodi magni laudantium nostrum cumque quis voluptatibus officia, aperiam, ullam accusamus corrupti, maxime eum ea animi tempore. Perferendis, ab porro? Cum ab reprehenderit esse accusamus? Optio, culpa maiores minus vitae quibusdam dolorem corrupti est minima facilis totam labore iusto? Enim temporibus explicabo omnis, voluptatibus nemo animi fugiat natus cumque!
+  </p>
+
+  <h2 id="parte-4">Parte 4</h2>
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus quasi distinctio corrupti placeat. Officiis numquam, dolorem nihil nam totam minima eius consequuntur architecto nobis repellendus ullam ratione voluptas magni cupiditate nemo, sed odit dolores fuga ut earum repudiandae dolor ducimus delectus. Et cupiditate ducimus, quae rerum veritatis tempora, nisi cum ea quam dolore consequatur quos omnis, quis debitis pariatur reprehenderit accusantium voluptatum corporis. Amet, libero autem. Veritatis ipsum, voluptates magnam aliquam quod non ratione, doloremque unde iste ut eveniet, veniam commodi. Voluptatum, hic laborum doloremque sed dolores eligendi, illo quaerat eum officiis dolorum voluptas sint consequatur nobis. Accusamus voluptatem iste hic non amet aliquam error dicta vel animi, architecto ea laboriosam cupiditate a commodi quam, quidem nisi aliquid facere aut repudiandae ad, minus repellendus fugiat tenetur. Vitae est nihil eius, perspiciatis ipsam minus voluptates suscipit corporis consectetur molestias nesciunt magnam dolorem atque expedita ab doloremque tenetur ullam consequatur aliquam facere?
+  </p>
+
+  <script>
+    addEventListener('DOMContentLoaded', () => {
+  const ids = ["parte-1","parte-2","parte-3","parte-4"]
+  ids.forEach((id) => {
+    const element = document.querySelector(`#${id} + p`)
+    const a = document.createElement('a')
+    a.href = '#inicio'
+    a.textContent = "Ir a inicio"
+    a.style.display = "block"
+    element.appendChild(a)
+  })
+})
+  </script>
+</body>
+</html>
