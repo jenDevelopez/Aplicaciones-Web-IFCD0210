@@ -33,12 +33,10 @@ function generarBebida() {
   container.appendChild(ol);
 
   for (let i = 0; i < bebidas.length; i++) {
-    if (i === opcion) {
+    if (i === opcion -1) {
       ol.appendChild(li);
       li.innerHTML = "Tu bebida es " + bebidas[i];
-
     }
-
   }
 
 
