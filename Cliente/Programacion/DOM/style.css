@@ -1,0 +1,67 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container{
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid red;
+}
+
+button{
+  padding: .5rem;
+  background-color: antiquewhite;
+  border:none;
+  border-radius: 5px;
+  width: 10rem;
+}
+.primera,.segunda{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.primera > div, .segunda > div{
+  display: flex;
+  gap: .5rem;
+}
+
+.listado{
+
+  align-self: start;
+  margin:1.5rem;
+  
+
+}
+.listado  li{
+  padding: .5rem;
+}
+
+.listado ol{
+  counter-reset: item;
+  list-style-type: none;
+}
+
+.listado li::before{
+  content: counter(item) ". ";
+  counter-increment: item;
+}
+.listado li:nth-child(odd){
+  background-color: rgb(77, 85, 102);
+  color: white;
+}
+.listado li:nth-child(even){
+  background-color: white;
+  color: rgb(77, 85, 102);
+}
+
+@media(width >= 992px){
+  .container{
+    width:60%;
+    margin: 0 auto;
+  }
+}

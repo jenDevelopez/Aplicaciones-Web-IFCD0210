@@ -4,14 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div>
-    <label for="">Introduce el numero de opcion deseada en la carga de bebidas(el máximo es 20)</label>
-    <input id="opcion" type="text">
-    <button onclick="generarBebida()">Seleccionar bebida</button>
+  <div class="container">
+    <button id="cartaBtn" onclick="verCarta()">VerCarta</button>
+    <div class="listado"></div>
+    <section class="primera">
+      <div>
+        <label for="">Elige tu numero de bebida</label>
+        <input id="opcion" type="text">
+      </div>
+      <button onclick="generarBebida()">Seleccionar bebida</button>
+    </section>
+    <section class="segunda">
+      <div>
+        <label for="">Introduce tu bebida a la lista</label>
+        <input id="nuevaBebida" type="text">
+      </div>
+      <button onclick="generarNuevaLista()">Añadir</button>
+    </section>
+    <p id="dialogo"></p>
   </div>
-  <div class="container"></div>
   <script src="./index.js"></script>
+
 </body>
 </html>
