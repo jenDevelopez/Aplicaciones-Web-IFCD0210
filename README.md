@@ -3,26 +3,11 @@
 ##
 Estructura de carpetas
 
+## Estructura de carpetas
 
-└───Cliente
-
-│   │
-
-│   ├───Maquetación
-
-│   │   │
-
-│   │   ├──Ejercicios
-
-│   │
-│   ├───Programación
-
-│       │
-
-│       ├──Ejercicios
-
-│  
-
-│
-
-└───Servidor
+* **Cliente**
+    * **Maquetación**
+        * **Ejercicios**
+    * **Programación**
+        * **Ejercicios**
+* **Servidor**
