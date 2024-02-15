@@ -5,10 +5,17 @@ Estructura de carpetas
 
 
 └───Cliente
+
 │   │
+
 │   ├───Maquetación
+
 │   │
+
 │   ├───Programación
+
 │  
+
 │
+
 └───Servidor
