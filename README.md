@@ -1,8 +1,5 @@
 # Aplicaciones-Web-IFCD0210
 
-##
-Estructura de carpetas
-
 ## Estructura de carpetas
 
 * **Cliente**
