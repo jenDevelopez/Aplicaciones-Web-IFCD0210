@@ -8,8 +8,10 @@
 </head>
 <body>
   <div class="container">
-    <button id="cartaBtn" onclick="verCarta()">VerCarta</button>
-    <div class="listado"></div>
+    <section>
+      <button id="cartaBtn" onclick="verCarta()">VerCarta</button>
+      <div class="listado"></div>
+    </section>
     <section class="primera">
       <div>
         <label for="">Elige tu numero de bebida</label>
@@ -17,13 +19,7 @@
       </div>
       <button onclick="generarBebida()">Seleccionar bebida</button>
     </section>
-    <section class="segunda">
-      <div>
-        <label for="">Introduce tu bebida a la lista</label>
-        <input id="nuevaBebida" type="text">
-      </div>
-      <button onclick="generarNuevaLista()">Añadir</button>
-    </section>
+  
     <p id="dialogo"></p>
   </div>
   <script src="./index.js"></script>

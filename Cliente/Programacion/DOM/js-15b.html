@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <section>
+      <button id="cartaBtn" onclick="verCarta()">VerCarta</button>
+      <div class="listado"></div>
+    </section>
+    <div class="sections">
+      <section class="primera">
+        <div>
+          <label for="">Elige tu numero de bebida</label>
+          <input id="opcion" type="text">
+        </div>
+        <button onclick="generarBebida()">Seleccionar bebida</button>
+      </section>
+      <section class="segunda">
+        <div>
+          <label for="">Introduce tu bebida a la lista</label>
+          <input id="nuevaBebida" type="text">
+        </div>
+        <button onclick="generarNuevaLista()">Añadir</button>
+      </section>
+      <p id="dialogo"></p>
+    </div>
+  </div>
+  <script src="./index.js"></script>
+
+</body>
+</html>
