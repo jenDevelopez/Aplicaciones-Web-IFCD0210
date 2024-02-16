@@ -85,13 +85,17 @@ function handleSubmitForm(e) {
       div.appendChild(p);
     }
   }
-
-
+  console.log(document.querySelectorAll('#confirmacion > p').length)
+  let btnInfo = document.getElementById('btnInfo')
+  if(document.querySelectorAll('#confirmacion > p').length > 0){
+    document.getElementById('confirmacion').classList.remove('hidden')
+    btnInfo.addEventListener('click',() => {
+      document.querySelector('#confirmacion').classList.add('hidden')
+    })
+  }
+ 
 
 }
 
-function cerrarPopup() {
-  const popup = document.querySelector('#error')
-  popup.classList.add('hidden')
-}
+
 
