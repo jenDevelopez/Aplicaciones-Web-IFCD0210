@@ -1,0 +1,42 @@
+Validar el formulario paso a paso
+
+Input nombre
+  - Si nombre es igual a "" && la longitud  es menor a  3 -> Mensaje de error✅
+Input Apellido 1 y Apellido 2
+  - si apellido es igual a "" && la longitud es menor de 3 -> Mensaje de error✅
+
+Input Telefono
+  El telefono no es obligatorio, verificar que el usuario ha introducido algo✅
+
+  cuando no se rellena el campo, al ser de tipo numero, devuelve 0,
+  si telefono es diferente a 0 
+
+  - Si el tipo de dato recibido es diferente de numero -> error✅
+  - Si la longitud de telefono es mayor que > 1 && el primero caracter es diferente de 6 o de 7 -> Mensaje de error✅
+  - Si la longitud es mayor o menor que 9 -> Mensaje de error✅
+
+Input email
+  El telefono no es obligatorio, verificar que el usuario ha introducido algo
+
+  -Verificar que el email contiene el caracter '@' y el caracter '.'✅
+
+Input Fecha
+  La fecha no es obligatoria, verificar que el usuario ha introducido algo
+  La fecha contiene 8 numeros y dos guiones de separacion,
+  
+  -Si la longitud de la fecha de nacimiento es diferente de 10 -> mensaje de error✅
+
+Input turno
+ El turno no es obligatoria
+
+ - Vericar si se ha seleccionado algun turno, o ninguno✅
+
+
+Input lenguaje
+Lenguajes no es obligatorio
+
+-Verificar si devuelve una cadena vacia o si se ha seleccionado un lenguaje ✅
+
+Input Privacidad
+El input de privacidad es obligatorio 
+- Si no se clica el checkbox -> Mensaje de error

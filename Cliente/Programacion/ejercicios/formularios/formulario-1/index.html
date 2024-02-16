@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>formulario
+    </h1>
+    <form method="post" onsubmit="handleSubmitForm(event)" autocomplete="off">
+      <!-- Nombre -->
+      <fieldset>
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" value="Jennifer">
+      </fieldset>
+
+      <!-- Apellido -->
+      <fieldset>
+        <label for="apellido-1">Primer Apellido</label>
+        <input type="text" id="apellido-1" name="apellido-1" value="Lopez">
+      </fieldset>
+
+      <!-- 2 apellido -->
+      <fieldset>
+        <label for="apellido-2">Segundo Apellido</label>
+        <input type="text" id="apellido-2" name="apellido-2" value="Montero">
+      </fieldset>
+
+      <!-- Telefono -->
+      <fieldset>
+        <label for="telefono">Teléfono</label>
+        <input type="tel" id="telefono" name="telefono">
+      </fieldset>
+
+      <!-- Email -->
+      <fieldset>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" value="correo@gmail.com">
+      </fieldset>
+
+      <!-- Fecha de nacimiento -->
+      <fieldset>
+        <label for="fecha-nacimiento">Fecha de nacimiento</label>
+        <input type="date" id="fecha-nacimiento" name="fecha-nacimiento">
+      </fieldset>
+
+      <!-- Radio -->
+      <fieldset>
+        <label for="">Elige un turno</label>
+        <div class="turno">
+          <fieldset>
+            <label for="turnoMañana">Turno mañana</label>
+            <input type="radio" name="turno" id="turnoMañana" value="turnoMañana">
+          </fieldset>
+          <fieldset>
+            <label for="turnoTarde">Turno tarde</label>
+            <input type="radio" name="turno" id="turnoTarde" value="turnoTarde">
+          </fieldset>
+        </div>
+      </fieldset>
+      <!-- Select de lenguajes -->
+      <fieldset>
+        <select name="lenguaje" id="lenguaje">
+          <option value="">Elige una opcion</option>
+          <option value="html">HTML</option>
+          <option value="css">CSS</option>
+          <option value="javascript">Javascript</option>
+        </select>
+      </fieldset>
+      <!-- Clausula de privacidad -->
+      <fieldset class="privacidad">
+        <input type="checkbox" id="privacidad">
+        <label for="privacidad">Acepto la política de privacidad</label>
+      </fieldset>
+      <input type="submit" value="Enviar">
+    </form>
+    <div id="error" class="hidden">
+      <p class="mensaje"></p>
+      <button class="btn" onclick="cerrarPopup()">x</button>
+    </div>
+    <div id="confirmacion" class=""></div>
+  </div>
+  <script src="./formulario.js"></script>
+</body>
+
+</html>
