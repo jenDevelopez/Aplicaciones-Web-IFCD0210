@@ -56,11 +56,11 @@
           "#5caa43",
           "#d8a83e",
         ];
-        for (let i = 0; i < divs.length; i++) {
+        $.each(divs, function (index, element) {
+          console.log(element);
           let color = colors[Math.floor(Math.random() * colors.length)];
-          let mensaje = `Imagen ${i + 1}`;
-          $(divs[i]).css("background-color", color);
-          $(divs[i]).hover(
+          $(this).css("background", color);
+          $(this).hover(
             function () {
               $(this).css("opacity", "0.7");
               $(this).append(mensaje);
@@ -70,12 +70,16 @@
               $(this).empty();
             }
           );
-          $(divs[i]).on("click", function () {
-            $(this).empty();
-            $(this).append('<img src="./foto.jpg">');
-          });
-        }
-      });
+         
+          $(this).on({
+            click: function(){
+              $(this).empty();
+              $(this).append('<img src="./foto.jpg" alt="imagen" >');
+            },
+            
+          })
+        });
+        });
     </script>
   </body>
 </html>
