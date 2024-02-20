@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style></style>
+  <body>
+    <div class="container">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque dolorem
+        ab exercitationem voluptatum optio modi consectetur expedita iure et
+        natus ipsam voluptate minus illum, nam corrupti autem neque cupiditate
+        saepe. Natus quae modi quasi, assumenda magnam vitae. Asperiores
+        adipisci provident esse cum, itaque architecto eius cupiditate voluptas
+        consequuntur a modi.
+      </p>
+      <button>Ocular parrafo</button>
+    </div>
+
+    <script src="../bendor/jquery-3.7.1.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+        $("p").on({
+          mouseenter: function(){
+            $(this).css('background-color','lightcoral')
+          },
+          mouseleave: function(){
+            $(this).css('background-color','lightblue')
+          }
+        })
+      })
+    </script>
+  </body>
+</html>

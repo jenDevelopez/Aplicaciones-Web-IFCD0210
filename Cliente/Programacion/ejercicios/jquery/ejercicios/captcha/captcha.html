@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Captcha</title>
+    <style>
+      .contenido {
+        display: none;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 70%;
+        height: 90%;
+      }
+
+      #ok {
+        background-color: aquamarine;
+      }
+
+      #error {
+        background-color: goldenrod;
+      }
+
+      body {
+        padding: 40px;
+      }
+
+      img {
+        max-height: 50%;
+        width: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Pregunta de seguridad</h2>
+    <h3>¿Cuánto suma 9+4?</h3>
+    <div id="form">
+      <input type="number" id="resultado" />
+      <input type="button" id="subm" value="Enviar" />
+    </div>
+    <div id="ok" class="contenido">
+      <h1 style="text-align: center">Genial!</h1>
+    </div>
+    <div id="error" class="contenido">
+      <h1 style="text-align: center">Prueba de nuevo</h1>
+    </div>
+
+    <script src="../../bendor/jquery-3.7.1.min.js"></script>
+    <script>
+      $(function () {
+        function validateForm() {
+          let suma = 13;
+          let resultado = $("#resultado").val();
+          console.log(resultado);
+
+          if ($(resultado).val() != suma) {
+            $("#error").show(500);
+          } else {
+            $("#ok").show(500);
+          }
+        }
+
+        $("#subm").on("click", function () {
+          validateForm();
+        });
+        $(".contenido").on("click", function () {
+          $(this).hide();
+        });
+      });
+    </script>
+  </body>
+</html>

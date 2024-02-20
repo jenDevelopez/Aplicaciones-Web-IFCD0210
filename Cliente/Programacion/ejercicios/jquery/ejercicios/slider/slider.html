@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+
+      @media (width >= 1200px) {
+        img {
+          width: 100%;
+          height: 100vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img id="0" src="./img/foto1.jpg" alt="" />
+      <img id="1" src="./img/foto2.jpg" alt="" />
+      <img id="2" src="./img/foto3.jpg" alt="" />
+      <img id="3" src="./img/foto4.jpg" alt="" />
+    </div>
+
+    <script src="../../bendor/jquery-3.7.1.min.js"></script>
+    <script>
+      let timeout;
+      let i = 0;
+      $(function () {
+        function next() {
+          clearTimeout(timeout);
+          timeout = setTimeout(function () {
+            $("#" + i).fadeIn(500);
+            $("#" - 1).hide();
+            i++;
+            if (i == 4) {
+              i = 0;
+            }
+            next();
+          }, 4000);
+        }
+        next();
+      });
+    </script>
+  </body>
+</html>
