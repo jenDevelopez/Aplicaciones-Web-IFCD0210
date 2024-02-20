@@ -6,13 +6,17 @@
     <title>Document</title>
     <style>
       main {
+        width: 100%;
+        height: 100vh;
+      }
+      .container {
+        width: 60%;
+        height: 60%;
+        transform: translate(40%, 40%);
         display: grid;
-        width: 50%;
-        height: 50vh;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr);
         gap: 10px;
-        margin: 20% auto;
       }
       .celda {
         border: 1px solid black;
@@ -29,22 +33,24 @@
 
   <body>
     <main>
-      <div class="celda"></div>
-      <div class="celda"></div>
-      <div class="celda"></div>
-      <div class="celda"></div>
-      <div class="celda"></div>
-      <div class="celda"></div>
-      <div class="celda"></div>
-      <div class="celda"></div>
-      <div class="celda"></div>
+      <div class="container">
+        <div class="celda"></div>
+        <div class="celda"></div>
+        <div class="celda"></div>
+        <div class="celda"></div>
+        <div class="celda"></div>
+        <div class="celda"></div>
+        <div class="celda"></div>
+        <div class="celda"></div>
+        <div class="celda"></div>
+      </div>
     </main>
 
     <script src="../../bendor/jquery-3.7.1.min.js"></script>
 
     <script>
       $(function () {
-        const divs = $("div");
+        const divs = $(".celda");
         const colors = [
           "#348faa",
           "#50df07",
@@ -59,6 +65,7 @@
         $.each(divs, function (index, element) {
           console.log(element);
           let color = colors[Math.floor(Math.random() * colors.length)];
+          let mensaje = `Imagen ${index + 1}`;
           $(this).css("background", color);
           $(this).hover(
             function () {
@@ -70,16 +77,13 @@
               $(this).empty();
             }
           );
-         
-          $(this).on({
-            click: function(){
-              $(this).empty();
-              $(this).append('<img src="./foto.jpg" alt="imagen" >');
-            },
-            
-          })
+
+          $(this).on("click", function () {
+            $(this).empty();
+            $(this).append('<img src="./foto.jpg" alt="imagen" >');
+          });
         });
-        });
+      });
     </script>
   </body>
 </html>
