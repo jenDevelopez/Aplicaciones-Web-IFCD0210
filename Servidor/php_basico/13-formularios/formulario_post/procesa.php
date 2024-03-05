@@ -7,8 +7,7 @@
   <title>Formulario Básico</title>
   <link rel="stylesheet" href="../style.css">
   <script>
-    addEventListener("DOMContentLoaded", function(e
-    ) {
+    addEventListener("DOMContentLoaded", function(e) {
       document.querySelector("img").classList.add("volando")
     })
   </script>
@@ -27,11 +26,16 @@
         <div>
 
           <?php
-           if(empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['edad'])){
-            echo "<h1>Completa el formulario</h1>";
+          if (empty($_POST['nombre']) || empty($_POST['email']) || empty($_POST['edad'])) {
+            echo "<h1>Completa el formulario</h1> ";
+          ?>
+
+            <div> <button class="boton" type="button" onclick="window.location.href='<?php echo $_SERVER['HTTP_REFERER']; ?>'">Volver al formulario</button> </div>
+
+          <?php
             http_response_code(404);
             exit;
-          }else if ($_SERVER['REQUEST_METHOD'] == "POST") {
+          } else if ($_SERVER['REQUEST_METHOD'] == "POST") {
             echo "<h1>Datos recibidos</h1>";
             echo "<ul >";
             echo "<li>Nombre: " . $_POST['nombre'] . "</li>";
