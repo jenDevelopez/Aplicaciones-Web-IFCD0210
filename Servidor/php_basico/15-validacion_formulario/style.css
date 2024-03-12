@@ -1,0 +1,107 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  position: relative;
+}
+
+h1,h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+
+fieldset {
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ddd;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+ul li{
+  margin-bottom: .5rem;
+}
+
+.generos,
+.cursos {
+  display: flex;
+  justify-content: space-around;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+ol{
+  padding-left: 1rem;
+}
+ol li{
+  margin-left: 1rem;
+}
+.error {
+  color: red;
+  display: block;
+}
+
+.error::after {
+  content: "*";
+}
+
+
+
+.datos {
+  width: 100%;
+  padding: 1rem;
+  box-shadow: 3px 2px 7px #45a049;
+  margin-top: 1rem;
+}
+
+@media (width >=1200px) {
+  form {
+    width: 50%;
+    margin-inline: auto;
+  }
+
+  .datos {
+    width: 50%;
+    margin-inline: auto;
+  }
+}

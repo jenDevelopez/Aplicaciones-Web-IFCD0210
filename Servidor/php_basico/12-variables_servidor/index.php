@@ -24,8 +24,6 @@
 <body>
   <?php
 
-  echo saludar($nombre);
-  // He comentado algunas variables porque daba problemas al estar en un servidor local
   $infoServer = array(
     'PHP_SELF' => ' //Devuelve el nombre del archivo actual',
     'GATEWAY_INTERFACE' => ' //Devuelve la interfaz de pasarela de la máquina',
