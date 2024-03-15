@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="container">
   <h1>Ejercicios de Jennifer</h1>
   <h2>Listado de ejercicios</h2>
   <?php
@@ -26,7 +27,11 @@
       "formulario get"=> "13-formularios/formulario_get/index.php",
       "formulario post"=> "13-formularios/formulario_post/index.php",
       "concurso"=> "14-concurso/index.php",
-      "validacion de formulario" => "15-validacion_formulario/index.php"
+      "validacion de formulario" => "15-validacion_formulario/index.php",
+      "enviar archivos" => "16-enviar_archivos/index.php",
+      "crear archivos" => "17-crear_contenido/index.php", 
+      "concurso_2" => "18-concurso-2/index.php",
+      "login" => "19-login/index.php"
       )
   ?>
   <ol>
@@ -40,5 +45,6 @@
     }
     ?>
   </ol>
+  </div>
 </body>
 </html>

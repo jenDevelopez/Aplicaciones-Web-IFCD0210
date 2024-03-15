@@ -6,11 +6,13 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 100%;
   margin-inline: auto;
 }
-
-ul {
+h1{
+  font-size: 1.8rem;
+}
+ol {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -35,4 +37,11 @@ a:hover {
 
 li:nth-child(even) {
   background-color: #f0f0f0;
+}
+
+@media(width>= 900px){
+  .container{
+    width: 50%;
+    margin-inline: auto;
+  }
 }

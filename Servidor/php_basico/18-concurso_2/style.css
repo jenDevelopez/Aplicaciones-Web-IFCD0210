@@ -1,0 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --fuente-principal: Arial, sans-serif;
+  --color-principal: #0099ff;
+  --color-secundario: #ddd;
+  --color-error: #ff0000;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formularios,.resultado {
+  width: 80%;
+  border: 1px solid var(--color-secundario);
+  padding: 20px;
+  margin-bottom: 20px;
+  
+}
+
+form{
+  padding: 1rem;
+}
+
+fieldset{
+  padding: 10px;
+  border: none;
+}
+.formulario {
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+label {
+  margin-bottom: 5px;
+  display: block;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  cursor: pointer;
+  background-color: var(--color-principal);
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid var(--color-principal);
+}
+
+.error {
+  color: var(--color-error);
+  font-size: 12px;
+  display: block;
+  
+}
+
+.error::after{
+  content: "*";
+}
+
+.lista-participantes,
+.lista-ganadores {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.resultado {
+  border: 1px solid var(--color-secundario);
+  padding: 20px;
+  width: 80%;
+}
+
+.lista-ganadores {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.lista-ganadores div {
+  width: 50%;
+}
+
+ul,
+ol {
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .formularios,.resultado{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 2rem;
+  }
+}
+
+

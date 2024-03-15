@@ -18,14 +18,19 @@
       <a href="php_curso/">Ir a ejercicios de php</a>
     </main>
     <footer>
-      &copy <span></span>Jennifer Lopez
+      <p>
+       &copy <span></span>Jennifer Lopez 
+      </p>
+      <a target="_blank" class="github" href="https://github.com/jenDevelopez/Aplicaciones-Web-IFCD0210/tree/main/Servidor/php_basico">
+        <img src="./img/github.svg" alt="">
+      </a>
     </footer>
   </div>
 
   <script>
     let date = new Date();
     let year = date.getFullYear()
-    document.querySelector('footer > span').innerHTML = year + ' ';
+    document.querySelector('footer > p > span').innerHTML = year + ' ';
   </script>
 </body>
 </html>

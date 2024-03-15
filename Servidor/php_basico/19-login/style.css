@@ -1,0 +1,57 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+/* Contenedor principal */
+.container {
+  width: 400px;
+  margin: 0 auto;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* Formulario de login */
+.login-form {
+  text-align: center;
+}
+
+/* Encabezado */
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Etiquetas */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Inputs */
+input[type="text"], input[type="password"],input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Botón */
+button {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Efecto hover para el botón */
+button:hover {
+  background-color: #333;
+}
