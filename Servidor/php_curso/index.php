@@ -31,7 +31,8 @@
       "enviar archivos" => "16-enviar_archivos/index.php",
       "crear archivos" => "17-crear_contenido/index.php", 
       "concurso_2" => "18-concurso-2/index.php",
-      "login" => "19-login/index.php"
+      "login" => "19-login/index.php",
+      "concurso con sesion" => "20-concurso_session/index.php"
       )
   ?>
   <ol>
