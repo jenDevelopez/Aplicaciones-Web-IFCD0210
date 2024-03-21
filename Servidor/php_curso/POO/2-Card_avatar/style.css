@@ -1,0 +1,75 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  margin: 20px;
+}
+
+.formulario {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 500px;
+}
+
+.campo {
+  margin-bottom: 10px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.campo input,
+.campo textarea {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.campo textarea {
+  height: 100px;
+}
+
+.boton {
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+
+.boton:hover {
+  background-color: #333;
+}
+
+
+.card {
+  border: 1px solid #ccc;
+  padding: 20px;
+  width: 300px;
+  margin: 20px;
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 18px;
+  margin-top: 0;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.card p {
+  margin-bottom: 5px;
+}
