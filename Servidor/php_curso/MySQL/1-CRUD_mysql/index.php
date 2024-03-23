@@ -1,18 +1,21 @@
 <?php
-#ini
-$host = "localhost";
-$user = "developez";
-$password = "developez";
+
+require("../utils_db.php");
+#parseo las credenciales
+$credentials = parse_credentials("../php.ini");
+$host = $credentials[0];
+$user = $credentials[1];
+$password = $credentials[2];
+
 
 #realizo la conexion
-$conexion = mysqli_connect($host, $user, $password) or die ("No se ha podido realizar la conexion");
+$conexion = connect_server($host,$user,$password);
 
-#Mensaje de verificacion
-//echo "La conexion con la base de datos se ha realizado con exito <br>";
 
 #conexion con la base de datos
-$database = "noticias";
-mysqli_select_db($conexion, $database) or die ("No se puede seleccionar la base de datos");
+$db = "noticias";
+connect_db($conexion,$db);
+
 $titulo = $contenido = $categoria = $imagen = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -40,13 +43,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $q = "SELECT * FROM noticia";
 
 #hago la consulta
-$result = mysqli_query($conexion, $q) or die ('Fallo en la conexion');
+$result = result_query($conexion,$q);
 
 #obtengo el numero de filas de la result
 $nfilas = mysqli_num_rows($result);
 
-#cierro la conexion 
-// mysqli_close($conexion);
+
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +58,7 @@ $nfilas = mysqli_num_rows($result);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accediendo a datos de mysql</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
@@ -90,10 +92,7 @@ $nfilas = mysqli_num_rows($result);
       </form>
     </div>
 
-    <?php
-    $titulo = $contenido = $categoria = $imagen = "";
-   
-    ?>
+    
     <div class="columna">
       <h2>Tabla de Noticias</h2>
       <table class="tabla-noticias">
@@ -117,13 +116,20 @@ $nfilas = mysqli_num_rows($result);
                 <?php echo $row["titulo"] ?>
               </td>
               <td>
-                <?php echo $row["contenido"] ?>
+                <?php 
+                  $contenido = $row["contenido"];
+                  $long_palabras_contenido = str_word_count($contenido);
+                  $limit_char = $long_palabras_contenido * 2;
+                $contenido = substr($contenido,0, $limit_char);
+                echo $contenido; ?>
+                <a href="<?php echo "noticia.php?id=" . $row["id"]; ?>">Leer más...</a>
+                <a href="<?php echo "noticia.php?id=" .$row["id"] . "&modificar='true'" ?>">Modificar</a>
               </td>
               <td>
                 <?php echo $row["categoria"] ?>
               </td>
               <td>
-                <?php echo $row["fecha_de_cracion"] ?>
+                <?php echo $row["fecha_de_creacion"] ?>
               </td>
               <td>
                 <img src='<?php echo $row["imagen"] ?>'>

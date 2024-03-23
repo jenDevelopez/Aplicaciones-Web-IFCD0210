@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Welcome</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <div class="container">
     <header>
@@ -15,13 +17,19 @@
     <main>
       <h2>Bienvenido a mi servidor</h2>
       <p>En esta pagina puedes acceder a mis ejercicios ver mi aprendizaje en PHP</p>
-      <a href="php_curso/">Ir a ejercicios de php</a>
+      <div class="links">
+        <a href="php_curso/php_basico/">Ir a ejercicios de php básico</a>
+        <a href="php_curso/POO/">Ir a ejercicios de Programacion orientada a objetos</a>
+        <a href="php_curso/MySQL/">Ir a ejercicios de MySQL</a>
+      </div>
+
     </main>
     <footer>
       <p>
-       &copy <span></span>Jennifer Lopez 
+        &copy <span></span>Jennifer Lopez
       </p>
-      <a target="_blank" class="github" href="https://github.com/jenDevelopez/Aplicaciones-Web-IFCD0210/tree/main/Servidor/php_basico">
+      <a target="_blank" class="github"
+        href="https://github.com/jenDevelopez/Aplicaciones-Web-IFCD0210/tree/main/Servidor/php_basico">
         <img src="./img/github.svg" alt="">
       </a>
     </footer>
@@ -33,4 +41,5 @@
     document.querySelector('footer > p > span').innerHTML = year + ' ';
   </script>
 </body>
+
 </html>
