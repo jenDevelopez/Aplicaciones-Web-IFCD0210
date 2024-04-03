@@ -30,8 +30,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $categoria = $_POST['categoria'];
   }
 
-  if (isset ($_POST['imagen'])) {
-    $imagen = $_POST['imagen'];
+ 
+  $imagen = "img/default.jpg";
+  if(isset($_FILES["file"])) {
+    $imagePath = "img/" . $_FILES["file"]["name"];
+    if(!move_uploaded_file($_FILES["file"]["tmp_name"],$imagePath)){
+      $mensaje = "ERROR:No se ha subido la noticia <href='index.php'>Volver</a>";
+      echo $mensaje;
+      exit;
+    }
   }
 
   $q = "INSERT INTO noticia SET titulo='$titulo', contenido='$contenido', categoria='$categoria', imagen='$imagen'";
@@ -65,7 +72,7 @@ $nfilas = mysqli_num_rows($result);
   <div class="container">
     <div class="columna">
       <h1>Formulario de Noticias</h1>
-      <form class="formulario" action="index.php" method="post" enctype="multipart/form-data">
+      <form class="formulario" autocomplete="off" action="index.php" method="post" enctype="multipart/form-data">
         <label for="title">Título:</label>
         <input type="text" id="title" name="titulo" placeholder="Ingrese el título de la noticia">
         <br>
@@ -124,6 +131,10 @@ $nfilas = mysqli_num_rows($result);
                 echo $contenido; ?>
                 <a href="<?php echo "noticia.php?id=" . $row["id"]; ?>">Leer más...</a>
                 <a href="<?php echo "noticia.php?id=" .$row["id"] . "&modificar='true'" ?>">Modificar</a>
+                <form action="delete.php" method="post">
+                  <input type="hidden" name="id" value="<?php $row["id"]?> ">
+                  <input type="submit" value="X">
+                </form>
               </td>
               <td>
                 <?php echo $row["categoria"] ?>
