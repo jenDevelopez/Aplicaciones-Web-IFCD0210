@@ -1,15 +1,17 @@
 <?php
-
+ini_set('display_errors', 1);
+require '../utils_db.php';
 if (!isset ($_GET["id"])) {
   $mensaje = "ERROR: fALTAN PARAMETROS";
   echo "$mensaje <a href='index.php'>Volver</a>";
 } else {
   $id = $_GET["id"];
   #conexion a la base de datos
-  $host = "localhost";
-  $user = "developez";
-  $password = "developez";
-
+  
+  $credentials = parse_credentials("../php.ini");
+  $host = $credentials[0];
+  $user = $credentials[1];
+  $password = $credentials[2];
   #realizo la conexion
   $conexion = mysqli_connect($host, $user, $password) or die ("No se ha podido realizar la conexion");
 
@@ -26,7 +28,11 @@ if (!isset ($_GET["id"])) {
   $contenido = $noticia["contenido"];
   $categoria = $noticia["categoria"];
   $imagen = $noticia["imagen"];
-  $fecha = $noticia["fecha_de_creacion"];
+  $fecha = $noticia["fecha"];
+
+  $q = "SELECT DISTINCT categoria FROM noticia";
+  $resultadoCategorias = result_query($conexion, $q);
+
 }
 
 ?>
@@ -47,7 +53,7 @@ if (!isset ($_GET["id"])) {
 <body>
   <div class="container">
     <div class="card">
-      <img class="card-img-top" src="<?php echo $imagen ?>" alt="Imagen de noticia <?php echo $id ?>">
+      <img class="card-img-top" src="./img/<?php echo $imagen ?>" alt="Imagen de noticia <?php echo $id ?>">
       <div class="card-body">
         <h2 class="card-title">
           <?php echo $titulo; ?>
@@ -80,20 +86,15 @@ if (!isset ($_GET["id"])) {
           <textarea id="text" name="contenido" placeholder="Ingrese el contenido de la noticia"></textarea>
           <br>
           <label for="category">Categoría:</label>
-          <select id="category" name="categoria">
-            <option value="">Seleccione una categoría</option>
-            <option value="politica">Política</option>
-            <option value="economia">Economía</option>
-            <option value="deportes">Deportes</option>
-            <option value="sociedad">Sociedad</option>
-            <option value="tecnologia">Tecnología</option>
-            <option value="ciencia">Ciencia</option>
-            <option value="cultura">Cultura</option>
-            <option value="internacional">Internacional</option>
-          </select>
+          <input type="text" id="category" name="categoria" list="categorias">
+          <datalist id="categorias">
+          <?php while ($row = mysqli_fetch_array($resultadoCategorias)) { ?>
+            <option value="<?php echo $row["categoria"] ?>"><?php echo $row["categoria"] ?></option>
+          <?php } ?>
+          </datalist>
           <br>
           <label for="image">Imagen:</label>
-          <input type="text" id="image" name="imagen">
+          <input type="file" id="image" name="imagen">
           <br>
           <button type="submit">Enviar</button>
         </form>
