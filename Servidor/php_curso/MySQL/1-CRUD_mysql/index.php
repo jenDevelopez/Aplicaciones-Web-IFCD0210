@@ -130,10 +130,7 @@ $resultadoCategorias = result_query($conexion, $q);
                   echo $contenido; ?>
                   <a href="<?php echo "noticia.php?id=" . $row["id"]; ?>">Leer más...</a>
                   <a href="<?php echo "noticia.php?id=" . $row["id"] . "&modificar='true'" ?>">Modificar</a>
-                  <form action="delete.php" method="post">
-                    <input type="hidden" name="id" value="<?php $row["id"] ?> ">
-                    <input type="submit" value="X">
-                  </form>
+                  <a href="<?php echo "delete.php?id=" .$row["id"] ?>">x</a>
                 </td>
                 <td>
                   <?php echo $row["categoria"] ?>
