@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding='UTF-8' ?>
+<persona>
+  <dni id="12345678A">
+    <nombre>John</nombre>
+    <apellido1>Doe</apellido1>
+    <direccion>Avenida Bienvenida s/n</direccion>
+  </dni>
+</persona>

@@ -4,8 +4,35 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 .container{
+  width: 100%;
+}
+header{
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 2px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+
+a{
+  text-decoration: none;
+}
+.user{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1rem;
+}
+.logout{
+  background-color: #007bff;
+  padding: .5rem 1rem;
+  color: white;
+  border-radius: 5px;
+ 
+}
+
+.main{
  display: flex;
  flex-direction: column;
  justify-content: start;
@@ -14,6 +41,7 @@
   gap: 2rem;
   padding: 1rem;
 }
+
 
 
 /* Formulario */
@@ -74,7 +102,7 @@
   width: 100px;
 }
 
-.tabla-noticias a {
+.tabla-noticias > td > a {
   color: #004080;
 }
 
@@ -86,3 +114,6 @@
   color: #007bff;
 }
  
+.th{
+  color: white;
+}

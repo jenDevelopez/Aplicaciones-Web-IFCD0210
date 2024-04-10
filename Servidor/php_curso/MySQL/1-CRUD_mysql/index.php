@@ -1,155 +1,142 @@
 <?php
-ini_set('display_errors', 1);
+session_start();
 require("../utils_db.php");
-#parseo las credenciales
-$credentials = parse_credentials("../php.ini");
-$host = $credentials[0];
-$user = $credentials[1];
-$password = $credentials[2];
 
-#realizo la conexion
-$conexion = mysqli_connect($host, $user, $password);
+#realizo la conexion con el servidor
+$conexion = connect_server();
 
-
-#conexion con la base de datos
-$db = "noticias";
-mysqli_select_db($conexion, $db);
-
-$titulo = $contenido = $categoria = $imagen = '';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-  if (isset($_POST['titulo'])) {
-    $titulo = $_POST['titulo'];
-  }
-
-  if (isset($_POST['contenido'])) {
-    $contenido = $_POST['contenido'];
-  }
-  if (isset($_POST['categoria'])) {
-    $categoria = $_POST['categoria'];
-  }
-
-
-  $imagen = "./img/default.jpg";
-  if (isset($_FILES["imagen"])) {
-    $imagePath = "./img/" . $_FILES["imagen"]["name"];
-    if (!move_uploaded_file($_FILES["imagen"]["tmp_name"], $imagePath)) {
-      $mensaje = "ERROR: No se ha subido la noticia <a href='index.php'>Volver</a>";
-      echo $mensaje;
-      exit;
-    }
-    $imagen = $imagePath;
-  }
-
-  $q = "INSERT INTO noticia SET id_usuario='1', titulo='$titulo', contenido='$contenido', categoria='$categoria', imagen='$imagen'";
-
-  mysqli_query($conexion, $q);
+$inicio = 0;
+$num = 3;
+if (isset($_GET['inicio'])) {
+	$inicio = $_GET['inicio'];
 }
-
-#intento de solicitar datos y mostrar en pantalla
 $q = "SELECT * FROM noticia";
 
-#hago la consulta
-$result = result_query($conexion, $q);
+$numFilas = contar_filas($conexion, $q);
 
-#obtengo el numero de filas de la result
-$nfilas = mysqli_num_rows($result);
+$columna = 'id';
+if (isset($_GET['columna'])) {
+	$columna = $_GET['columna'];
+}
 
-$q = "SELECT DISTINCT categoria FROM noticia";
-$resultadoCategorias = result_query($conexion, $q);
-
+#selecciono los datos que se van a mostrar
+$q = "SELECT * FROM noticia ORDER BY $columna LIMIT $inicio,$num";
+$resultNoticias = query($conexion, $q);
 ?>
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Accediendo a datos de mysql</title>
-  <link rel="stylesheet" href="./css/style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-  <div class="container">
+	<div class="container">
+		<header>
+			<div class="user">
+				<a href="profile.php" class="icon-user">
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-circle">
+						<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+						<path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+						<path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+						<path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+					</svg>
+				</a>
+				<h2>
+					<?php
+					if (isset($_SESSION['user'])) {
+						$user = $_SESSION['user'];
+						echo $user;
+					}
+					?>
+				</h2>
+			</div>
+			<?php
+			if (!isset($_SESSION['user'])) {
+				echo "<a href='login.php'>Iniciar sesión</a>";
+			} else {
+				echo "<a href='logout.php'>Cerrar sesión</a>";
+			}
+			?>
+
+		</header>
+		<div class="columna">
+			<h2>Tabla de Noticias</h2>
+			<?php echo "Numero de noticias: $numFilas" ?>
+			<table class="tabla-noticias">
+				<thead>
+					<tr>
+						<th><a class="th" href="index.php?columna=id">Id</a></th>
+						<th><a class="th" href="index.php?columna=titulo">Título</a></th>
+						<th><a class="th" href="index.php?columna=contenido">Noticia</a></th>
+						<th><a class="th" href="index.php?columna=categoria">Categoría</a></th>
+						<th><a class="th" href="index.php?columna=fecha">Fecha</a></th>
+						<th><a class="th" href="index.php?columna=imagen">Imagen</a></th>
+					</tr>
+				</thead>
+				<tbody>
+					<?php while ($row = mysqli_fetch_array($resultNoticias)) { ?>
+
+						<tr>
+							<td>
+								<?php echo $row["id"] ?>
+							</td>
+							<td>
+								<?php echo $row["titulo"] ?>
+							</td>
+							<td>
+								<?php
+								$strFinal = substr($row["contenido"], 0, 100);
+								echo substr($row['contenido'], 0, 100);
+								if ($strFinal < $row["contenido"]) {
+									echo "...";
+								}
+								?>
+								<a href="<?php echo "noticia.php?id=" . $row["id"]; ?>">Leer más...</a>
 
 
-    <div class="container">
-      <div class="columna">
-        <h1>Formulario de Noticias</h1>
-        <form autocomplete="off" class="formulario" action="index.php" method="post" enctype="multipart/form-data">
-          <label for="title">Título:</label>
-          <input type="text" id="title" name="titulo" placeholder="Ingrese el título de la noticia">
-          <br>
-          <label for="text">Texto:</label>
-          <textarea id="text" name="contenido" placeholder="Ingrese el contenido de la noticia"></textarea>
-          <br>
-          <label for="category">Categoría:</label>
-          <input type="text" id="category" name="categoria" list="categorias">
-          <datalist id="categorias">
-          <?php while ($row = mysqli_fetch_array($resultadoCategorias)) { ?>
-            <option value="<?php echo $row["categoria"] ?>"><?php echo $row["categoria"] ?></option>
-          <?php } ?>
-          </datalist>
-          <br>
-          <label for="image">Imagen:</label>
-          <input type="file" id="image" name="imagen">
-          <br>
-          <button type="submit">Enviar</button>
-        </form>
-      </div>
+								<div <?php if (isset($_SESSION['user'])) { ?>>
+									<a href="<?php echo "noticia.php?id=" . $row["id"] . "&modificar='true'" ?>">Modificar</a>
+									<form action="delete.php" method="post">
+										<input type="hidden" name="id" value="<?php echo $row['id'] ?>">
+										<input type="hidden" name="imagen" value="<?php echo $row['imagen']; ?>">
+										<input type="submit" value="x" class="eliminar">
+									</form>
+								</div <?php } ?>>
+							</td>
+							<td>
+								<?php echo $row["categoria"] ?>
+							</td>
+							<td>
+								<?php echo $row["fecha"] ?>
+							</td>
+							<td>
+								<img src='<?php echo $row["imagen"] ?>'>
+							</td>
+						</tr>
+					<?php } ?>
 
-      <div class="columna">
-        <h2>Tabla de Noticias</h2>
-        <table class="tabla-noticias">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Título</th>
-              <th>Noticia</th>
-              <th>Categoría</th>
-              <th>Fecha</th>
-              <th>Imagen</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php while ($row = mysqli_fetch_array($result)) { ?>
-              <tr>
-                <td>
-                  <?php echo $row["id"] ?>
-                </td>
-                <td>
-                  <?php echo $row["titulo"] ?>
-                </td>
-                <td>
-                  <?php
-                  $contenido = $row["contenido"];
-                  $long_palabras_contenido = str_word_count($contenido);
-                  $limit_char = $long_palabras_contenido * 2;
-                  $contenido = substr($contenido, 0, $limit_char);
-                  echo $contenido; ?>
-                  <a href="<?php echo "noticia.php?id=" . $row["id"]; ?>">Leer más...</a>
-                  <a href="<?php echo "noticia.php?id=" . $row["id"] . "&modificar='true'" ?>">Modificar</a>
-                  <a href="<?php echo "delete.php?id=" .$row["id"] ?>">x</a>
-                </td>
-                <td>
-                  <?php echo $row["categoria"] ?>
-                </td>
-                <td>
-                  <?php echo $row["fecha"] ?>
-                </td>
-                <td>
-                  <img src='<?php echo $row["imagen"] ?>'>
-                </td>
-              </tr>
-            <?php } ?>
-          </tbody>
+				</tbody>
+			</table>
+			<div>
+				<?php echo $_GET['inicio'] ?>
 
-        </table>
-      </div>
-    </div>
+				<?php if ($incio > 0) { ?>
+					<a href="index.php?inicio=<?php echo $inicio - $num ?>">
+						<< Atrás</a>
+						<?php } ?>
 
+						<?php if ($inicio + $num <= $numFilas) { ?><a href="index.php?inicio=<?php echo $incio + $num ?>">Siguiente
+								>></a>
+						<?php
+						} ?>
 
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>

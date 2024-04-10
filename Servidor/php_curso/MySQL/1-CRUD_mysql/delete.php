@@ -1,11 +1,11 @@
 <?php
 ini_set('display_errors', 1);
 require '../utils_db.php';
-if (!isset ($_GET["id"])) {
+if (!isset ($_POST["id"])) {
   $mensaje = "ERROR: fALTAN PARAMETROS";
   echo "$mensaje <a href='index.php'>Volver</a>";
 } else {
-  $id = $_GET["id"];
+  $id = $_POST["id"];
   #conexion a la base de datos
   
   $credentials = parse_credentials("../php.ini");

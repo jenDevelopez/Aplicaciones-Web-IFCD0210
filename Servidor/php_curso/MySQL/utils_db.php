@@ -1,27 +1,30 @@
 <?php
-function connect_server($host, $user, $password)
+session_start();
+function connect_server()
 {
-  $connection = mysqli_connect($host, $user, $password);
-  if (!$connection) {
-    throw new Exception("Failed to connect to MySQL server: " . mysqli_connect_error());
+  $credentials = parse_credentials("../php.ini");
+  $host = $credentials[0];
+  $user = $credentials[1];
+  $password = $credentials[2];
+  $db = 'noticias';
+  $conexion = mysqli_connect($host, $user, $password,$db) or die("No se ha podido conectar con el servidor");
+  if(!$conexion){
+    echo "No hay conexion";
   }
-  return $connection;
+  return $conexion;
 }
 
-function connect_db($connection, $db)
+function connect_db($conexion,$db)
 {
-  if (!mysqli_select_db($connection, $db)) {
-    throw new Exception("Failed to select database: " . mysqli_error($connection));
+  if (!mysqli_select_db($conexion, $db)) {
+    die("Conexion fallida con la tabla");
   }
-  return $connection;
+  return $conexion;
 }
 
-function result_query($connection, $query)
+function query($conexion,$query)
 {
-  $result = mysqli_query($connection, $query);
-  if (!$result) {
-    throw new Exception("" . mysqli_error($connection));
-  }
+  $result = mysqli_query($conexion, $query);
   return $result;
 }
 
@@ -33,4 +36,29 @@ function parse_credentials($file)
   $password = $datos['password'];
 
   return array($host, $user, $password);
+}
+
+function contar_filas($conexion,$q)
+{
+  $result = mysqli_query($conexion, $q);
+  $nFilas = mysqli_num_rows($result);
+  return $nFilas;
+}
+
+function loginWithEmailAndPassword($email, $password)
+{
+
+  $conexion = connect_server();
+  $q = "SELECT * FROM usuarios WHERE email = '$email' AND password = '$password'";
+  $result = query($conexion,$q);
+
+  if(mysqli_num_rows($result) > 0) {
+    #se inicia sesion
+    $_SESSION['user'] = $email;
+    $user = $_SESSION['user'];
+
+    return $user;
+  }else{
+    return false;
+  }
 }
