@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  h1 {
+    font-size: 2rem;
+    text-align: center;
+    color: rgb(83, 109, 223);
+  }
+
+  h2 {
+    font-size: 0.9rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+  }
+
+  .container {
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    width: 100%;
+  }
+
+  @media (width >=1200px) {
+    .container {
+      width: 80%;
+      margin-inline: auto;
+    }
+  }
+
+  p {
+    margin-bottom: 10px;
+  }
+
+  .card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    margin: 10px;
+    box-shadow: 5px 5px 10px #d3d3d3;
+    border-radius: 10px;
+    padding: 10px;
+    gap: 0.5rem;
+    position: relative;
+    min-height: 300px;
+  }
+
+  .card > img{
+    max-width: 100%;
+    width: 100%;
+    height: 30%;
+  }
+
+  .categoria {
+    background-color: rgb(83, 109, 223);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px;
+  }
+
+  .card:hover {
+    background-color: #f0f0f0;
+  }
+</style>
+
+  <body>
+    <!-- url-api  http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/api/select.php -->
+    <h1>Noticias de hoy</h1>
+    <div class="container" id="datos"></div>
+    <script>
+    function getData(dataItem) {
+      return [
+        item.id,
+        item.titulo,
+        item.contenido,
+        item.categoria,
+        item.fecha,
+        item.imagen,
+      ];
+    }
+
+    const urlBase =
+      "http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/";
+    const baseImg = "http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/1-CRUD_mysql/img"
+
+    function createCard(dataItem, container) {
+      const div = document.createElement("div");
+      div.classList.add("card");
+      div.innerHTML = `
+    <img src="${baseImg}/${dataItem.imagen}" alt="">
+    <h2>${dataItem.titulo}</h2>
+    <p>${dataItem.contenido}</p>
+    <p class="categoria">${dataItem.categoria}</p>
+  `;
+      container.appendChild(div);
+    }
+
+
+    
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+        var datos = JSON.parse(this.responseText);
+        let container = document.querySelector("#datos");
+        datos.map((item) => createCard(item,container))
+      }
+    };
+    xmlhttp.open("GET", urlBase + "api/select.php", true);
+
+    xmlhttp.send();
+  </script>
+  </body>
+
+</html>

@@ -93,9 +93,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <a href="profile.php?escribir='true'">Escribir noticia</a>
       </div>
 
-      <h3><?php if ($numNoticias == 0)
-        echo "No has escrito ninguna noticia" ?></h3>
-        <ul class="lista-articulos" <?php while ($row = mysqli_fetch_array($resultNoticias)) { ?>>
+   
+        <?php if ($numNoticias == 0) echo "<h3>No has escrito ninguna noticia</h3>" ?>
+     
+        <ul class="lista-articulos">
+          <?php while ($row = mysqli_fetch_array($resultNoticias)) { ?>
           <li>
             <article class="noticia">
               <h3><?php echo $row['titulo'] ?></h3>
@@ -141,7 +143,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
               </div>
             </article>
           </li>
-        </ul <?php } ?>>
+          <?php } ?>
+        </ul >
 
 
     </section>

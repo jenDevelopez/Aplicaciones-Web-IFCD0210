@@ -54,6 +54,11 @@
       position: relative;
       min-height: 300px;
     }
+
+    .card > img{
+      max-width: 100%;
+      height: auto;
+    }
     .categoria {
       background-color: rgb(83, 109, 223);
       color: white;
@@ -66,38 +71,32 @@
       background-color: #f0f0f0;
     }
   </style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
   <body>
     <!-- url-api  http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/api/select.php -->
     <h1>Noticias de hoy</h1>
     <div class="container" id="datos"></div>
     <script>
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          var datos = JSON.parse(this.responseText);
-         for (let i = 0; i < datos.length; i++) {
-            let div = document.createElement("div");
-            let datosDiv = document.getElementById("datos");
-            div.innerHTML += `<img src=${datos[i].image} alt="">
-             <h2>${datos[i].titulo}</h2>
-             <p>${datos[i].contenido}</p>
-             <p class="categoria">${datos[i].categoria}</p>`;
+      const urlBase = "http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/";
+      const baseImg = "http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/1-CRUD_mysql/img"
 
-            div.classList.add("card");
-            datosDiv.appendChild(div);
-          }
-
-       
-        }
-      };
-      xmlhttp.open(
-        "GET",
-        "http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/api/select.php",
-        true
-      );
-
-      xmlhttp.send();
+      $.get(urlBase + "api/select.php", function (datos) {
+        $.each(datos,function(){
+          $("#datos").append(`
+          <div class="card">
+            
+            <img src="${baseImg}/${this.imagen}" alt="">
+    <h2>${this.titulo}</h2>
+    <p>${this.contenido}</p>
+    <p class="categoria">${this.categoria}</p>
+            
+            </div>
+          
+          `)
+        })
+      
+      })
     </script>
   </body>
 </html>
