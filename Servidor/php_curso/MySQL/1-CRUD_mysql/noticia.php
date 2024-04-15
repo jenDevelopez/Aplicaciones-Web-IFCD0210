@@ -31,7 +31,7 @@ if (!isset ($_GET["id"])) {
   $fecha = $noticia["fecha"];
 
   $q = "SELECT DISTINCT categoria FROM noticia";
-  $resultadoCategorias = query($conexion, $q);
+  $resultadoCategorias = query($q);
 
 }
 

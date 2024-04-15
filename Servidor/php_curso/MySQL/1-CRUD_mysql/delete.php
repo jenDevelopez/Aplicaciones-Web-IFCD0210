@@ -1,11 +1,11 @@
 <?php
 ini_set('display_errors', 1);
 require '../utils_db.php';
-if (!isset ($_POST["id"])) {
+if (!isset ($_GET["id"])) {
   $mensaje = "ERROR: fALTAN PARAMETROS";
   echo "$mensaje <a href='index.php'>Volver</a>";
 } else {
-  $id = $_POST["id"];
+  $id = $_GET["id"];
   #conexion a la base de datos
   
   $credentials = parse_credentials("../php.ini");
@@ -21,5 +21,6 @@ if (!isset ($_POST["id"])) {
   mysqli_select_db($conexion, $database) or die ("No se puede seleccionar la base de datos");
   $q = "DELETE FROM noticia WHERE id='$id'";
   mysqli_query($conexion,$q);
-  header('Location: index.php');
+  $referer = $_SERVER['HTTP_REFERER'];
+  header("Location: $referer");
 }

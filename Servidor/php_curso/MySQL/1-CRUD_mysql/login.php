@@ -1,20 +1,25 @@
 <?php 
+ini_set('display_errors',1);
 require('../utils_db.php');
 
 if(isset($_SESSION['user'])){
-  header('location:profile.php');
+  $user = $_SESSION['user'];
+  echo "Hay sesion user: $user";
+  // header('location:profile.php');
 }
 
-
+$mensaje = '';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  $mensaje = '';
   if(isset($_POST['email']) && isset($_POST['password'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
     $user = loginWithEmailAndPassword($email,$password);
   }
-   
+   if($user == false){
+    $mensaje = 'El usuario o contraseña son incorrectos';
+   }
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -35,17 +40,19 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <input type="email" id="usuario" name="email" placeholder="Ingrese su nombre de usuario">
     <label for="contraseña">Contraseña:</label>
     <input type="password" id="contraseña" name="password" placeholder="Ingrese su contraseña">
-    <button id="btn-login" type="submit">Ingresar</button>
-    <a href="#">¿Olvidaste tu contraseña?</a>
-    <a href="./signUp.php">Registrate</a>
-  </form>
-  <p>
+    <p class="error">
     <?php 
       if($mensaje != ''){
         echo $mensaje;
       }
     ?>
   </p>
+    <button id="btn-login" type="submit">Ingresar</button>
+
+    <a href="#">¿Olvidaste tu contraseña?</a>
+    <a href="./signUp.php">Registrate</a>
+  </form>
+ 
 </div>
 
 </body>

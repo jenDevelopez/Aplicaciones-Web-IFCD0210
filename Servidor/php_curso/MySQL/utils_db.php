@@ -22,8 +22,9 @@ function connect_db($conexion,$db)
   return $conexion;
 }
 
-function query($conexion,$query)
+function query($query)
 {
+  $conexion = connect_server();
   $result = mysqli_query($conexion, $query);
   return $result;
 }
@@ -50,12 +51,13 @@ function loginWithEmailAndPassword($email, $password)
 
   $conexion = connect_server();
   $q = "SELECT * FROM usuarios WHERE email = '$email' AND password = '$password'";
-  $result = query($conexion,$q);
+  $result = query($q);
 
   if(mysqli_num_rows($result) > 0) {
     #se inicia sesion
     $_SESSION['user'] = $email;
     $user = $_SESSION['user'];
+    header('location:profile.php');
 
     return $user;
   }else{
