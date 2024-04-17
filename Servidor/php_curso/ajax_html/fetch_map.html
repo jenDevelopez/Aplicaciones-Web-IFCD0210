@@ -85,11 +85,36 @@
     <h1>Noticias de hoy</h1>
     <div class="container" id="datos"></div>
     <script>
-
-
-    const urlBase =
+      const urlBase =
       "http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/";
-    const baseImg = "http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/1-CRUD_mysql/img"
+
+      const baseImg = "http://localhost/Aplicaciones-Web-IFCD0210/Servidor/php_curso/MySQL/1-CRUD_mysql/img"
+
+
+      function errDatos(err){
+        console.error(err)
+      }
+      async function positivo(response){
+        const container = document.getElementById("datos");
+        let datos = await response.json();
+        datos.map((dataItem) => {
+          const div = document.createElement("div");
+          div.classList.add("card");
+          div.innerHTML = `
+           <img src="${baseImg}/${dataItem.imagen}" alt="">
+              <h2>${dataItem.titulo}</h2>
+              <p>${dataItem.contenido}</p>
+              <p class="categoria">${dataItem.categoria}</p>
+            `;
+          container.appendChild(div);
+        })
+      }
+      fetch(urlBase + "api/select.php")
+      .then(positivo)
+      .catch(errDatos)
+
+   /* 
+   
 
     function createCard(dataItem, container) {
       const div = document.createElement("div");
@@ -102,20 +127,20 @@
   `;
       container.appendChild(div);
     }
-
+*/
 
     
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function () {
-      if (this.readyState == 4 && this.status == 200) {
-        var datos = JSON.parse(this.responseText);
-        let container = document.querySelector("#datos");
-        datos.map((item) => createCard(item,container))
-      }
-    };
-    xmlhttp.open("GET", urlBase + "api/select.php", true);
+    // var xmlhttp = new XMLHttpRequest();
+    // xmlhttp.onreadystatechange = function () {
+    //   if (this.readyState == 4 && this.status == 200) {
+    //     var datos = JSON.parse(this.responseText);
+    //     let container = document.querySelector("#datos");
+    //     datos.map((item) => createCard(item,container))
+    //   }
+    // };
+    // xmlhttp.open("GET", urlBase + "api/select.php", true);
 
-    xmlhttp.send();
+    // xmlhttp.send();
   </script>
   </body>
 

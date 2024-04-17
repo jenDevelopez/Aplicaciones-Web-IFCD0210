@@ -13,7 +13,8 @@ if($_SERVER['REQUEST_METHOD' === 'OPTIONS']){
 }
 
 connect_server();
-$q = "SELECT * FROM noticia";
+
+$q = "SELECT noticia.*,usuarios.nombre FROM noticia INNER JOIN usuarios ON noticia.id_usuario = usuarios.id";
 $result = query($q);
 $data = array();
 header('Access-Control-Allow-Origin: *');
