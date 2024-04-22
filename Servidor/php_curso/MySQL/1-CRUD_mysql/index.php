@@ -1,6 +1,6 @@
 <?php
 ini_set('display_errors', 1);
-require '../utils_db.php';
+require './utils/utils_db.php';
 
 #realizo la conexion con el servidor
 $conexion = connect_server();
@@ -38,7 +38,7 @@ $resultNoticias = query($q);
 	<div class="container">
 		<header>
 			<div class="user">
-				<a href="index.php" class="icon-user header-link">
+				<a href="index.php" class="header-link">
 					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
 						stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 						class="icon icon-tabler icons-tabler-outline icon-tabler-home">
@@ -63,44 +63,67 @@ $resultNoticias = query($q);
 
 		</header>
 
-		<div class="columna">
+		<main>
+			<aside class="aside">
+				<div>
+					<select id="criterioOrdenacion">
+						<option value="">Ordenar por</option>
+						<option value="nombre">Nombre</option>
+						<option value="categoria">Categoría</option>
+						<option value="fecha">Fecha</option>
+						<option value="categoriaFecha">Categoría y fecha</option>
+						<option value="autor">Autor</option>
+					</select>
+				</div>
 
-			<section class="noticias">
-				<?php while ($row = mysqli_fetch_array($resultNoticias)) { ?>
-					<div class="noticia">
-						<h2><?php echo $row["titulo"] ?></h2>
-						<p>
-							<?php
-							$strFinal = substr($row["contenido"], 0, 100);
-							echo substr($row['contenido'], 0, 100);
-							if ($strFinal < $row["contenido"]) {
-								echo "...";
-							}
-							?>
-						</p>
-						<div>
-							<p><?php echo $row["categoria"] ?></p>
-							<date><?php echo substr($row["fecha"], 0, 10) ?></date>
+			</aside>
+			<div class="columna">
+
+				<section class="noticias">
+					<?php while ($row = mysqli_fetch_array($resultNoticias)) { ?>
+						<div class="noticia">
+							<h2><?php echo $row["titulo"] ?></h2>
+							<p>
+								<?php
+								$strFinal = substr($row["contenido"], 0, 100);
+								echo substr($row['contenido'], 0, 100);
+								if ($strFinal < $row["contenido"]) {
+									echo "...";
+								}
+								?>
+							</p>
+							<div>
+								<p><?php echo $row["categoria"] ?></p>
+								<date><?php echo substr($row["fecha"], 0, 10) ?></date>
+							</div>
+							<a class="link-noticia" href="noticia.php?id=<?php echo $row["id"] ?>">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+									stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+									class="icon icon-tabler icons-tabler-outline icon-tabler-link">
+									<path stroke="none" d="M0 0h24v24H0z" fill="none" />
+									<path d="M9 15l6 -6" />
+									<path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" />
+									<path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" />
+								</svg>
+							</a>
 						</div>
-						<a class="link-noticia" href="noticia.php?id=<?php echo $row["id"] ?>">
-						<svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-link"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 15l6 -6" /><path d="M11 6l.463 -.536a5 5 0 0 1 7.071 7.072l-.534 .464" /><path d="M13 18l-.397 .534a5.068 5.068 0 0 1 -7.127 0a4.972 4.972 0 0 1 0 -7.071l.524 -.463" /></svg>
-						</a>
-					</div>
-				<?php } ?>
-			</section>
-			<div class="links">
-				<?php if ($inicio > 0) { ?>
-					<a href="index.php?inicio=<?php echo $inicio - $num ?>">
-						<< Atrás</a>
-						<?php } ?>
+					<?php } ?>
+				</section>
+				<div class="links">
+					<?php if ($inicio > 0) { ?>
+						<a href="index.php?inicio=<?php echo $inicio - $num ?>">
+							<< Atrás</a>
+							<?php } ?>
 
-						<?php if ($inicio + $num <= $numFilas) { ?><a href="index.php?inicio=<?php echo $inicio + $num ?>">Siguiente
-								>></a>
-							<?php
-						} ?>
+							<?php if ($inicio + $num <= $numFilas) { ?><a
+									href="index.php?inicio=<?php echo $inicio + $num ?>">Siguiente
+									>></a>
+								<?php
+							} ?>
 
+				</div>
 			</div>
-		</div>
+		</main>
 	</div>
 </body>
 

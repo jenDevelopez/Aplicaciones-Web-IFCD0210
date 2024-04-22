@@ -1,8 +1,6 @@
 <?php
-ini_set('display_erros', 1);
-session_start();
-require '../utils_db.php';
 ini_set('display_errors', 1);
+require './utils/utils_db.php';
 if (!isset($_SESSION["user"])) {
   header("location: login.php");
 } else {
@@ -30,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   if (isset($_GET['escribir'])) {
     $escribir = true;
   }
-  if(isset($_GET['close'])) {
+  if (isset($_GET['close'])) {
     $escribir = '';
   }
 }
@@ -93,11 +91,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <a href="profile.php?escribir='true'">Escribir noticia</a>
       </div>
 
-   
-        <?php if ($numNoticias == 0) echo "<h3>No has escrito ninguna noticia</h3>" ?>
-     
+
+      <?php if ($numNoticias == 0)
+        echo "<h3>No has escrito ninguna noticia</h3>" ?>
+
         <ul class="lista-articulos">
-          <?php while ($row = mysqli_fetch_array($resultNoticias)) { ?>
+        <?php while ($row = mysqli_fetch_array($resultNoticias)) { ?>
           <li>
             <article class="noticia">
               <h3><?php echo $row['titulo'] ?></h3>
@@ -143,15 +142,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
               </div>
             </article>
           </li>
-          <?php } ?>
-        </ul >
+        <?php } ?>
+      </ul>
 
 
     </section>
     <section <?php if ($escribir != '') { ?>>
 
 
-     
+
 
         <form action="./send.php" method="post">
           <input type="hidden" name="id_usuario" value="<?php echo $id ?>">
@@ -178,13 +177,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
           </div>
           <button type="submit">Enviar</button>
           <a class="close" href="profile.php?close='true'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    class="icon icon-tabler icons-tabler-outline icon-tabler-x">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M18 6l-12 12" />
-                    <path d="M6 6l12 12" />
-                  </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-x">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+              <path d="M18 6l-12 12" />
+              <path d="M6 6l12 12" />
+            </svg>
           </a>
         </form>
 

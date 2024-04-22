@@ -1,5 +1,5 @@
 <?php 
-require '../utils_db.php';
+require './utils/utils_db.php';
 connect_server();
 $titulo = $contenido = $categoria = $imagen = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

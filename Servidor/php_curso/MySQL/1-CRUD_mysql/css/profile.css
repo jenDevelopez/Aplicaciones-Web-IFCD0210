@@ -70,29 +70,53 @@ aside{
   margin-bottom: 5px;
 }
 
-.lista-articulos  {
+.lista-articulos {
   list-style: none;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+  margin: 0;
 }
 
-.articulos ul li {
-  margin-bottom: 10px;
-  padding: 10px;
+.lista-articulos li {
+  margin-bottom: 20px;
+}
+
+.noticia {
+  background-color: #fff;
   border: 1px solid #ddd;
+  padding: 15px;
   border-radius: 5px;
 }
 
+.noticia h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.noticia p {
+  line-height: 1.5;
+}
+
 .acciones {
-  margin-top: 1rem;
   display: flex;
   justify-content: flex-end;
-  gap: .5rem;
+  margin-top: 10px;
 }
 
 .acciones a {
-  color: black;
+  margin-left: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.acciones a svg {
+  width: 20px;
+  height: 20px;
+}
+
+.acciones a:hover {
+  opacity: 0.7;
+  color: orangered;
 }
 
 #btn-modificar, #btn-eliminar {

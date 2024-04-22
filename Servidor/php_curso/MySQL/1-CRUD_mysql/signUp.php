@@ -1,5 +1,5 @@
 <?php
-require ('../utils_db.php');
+require './utils/utils_db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $mensaje = '';
   if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['name'])) {
@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $db = 'noticias';
     mysqli_select_db($conexion, $db);
     $q = "SELECT email, password FROM usuarios;";
-    $result = query($conexion, $q);
+    $result = query($q);
     while ($row = mysqli_fetch_array($result)) {
       if ($email == $row['email']) {
         $mensaje = 'Ya estas registrado, <a href"login.php">Inicia sesión</a>';
@@ -18,10 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $q = "INSERT INTO usuarios SET  nombre='$name',email='$email',password='$password'";
         mysqli_query($conexion, $q) or die("No se ha podido registrar al usuario");
         loginWithEmailAndPassword($email, $password);
-
+        exit;
 
       }
     }
+  }
+
+  if(isset($_SESSION['user'])){
+    header('location:profile.php');
   }
 }
 
