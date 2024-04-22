@@ -2,11 +2,7 @@
 ini_set('display_errors',1);
 require './utils/utils_db.php';
 
-if(isset($_SESSION['user'])){
-  $user = $_SESSION['user'];
-  echo "Hay sesion user: $user";
-  header('location:profile.php');
-}
+
 
 $mensaje = '';
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
