@@ -10,13 +10,15 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
 }else{
   if(isset($_POST['username']) &&  isset($_POST['password'])){
     $username = $_POST['username'];
-    $user = login($username);
+    $password = $_POST['password'];
+    $user = login($username,$password);
   }
 
   if(!isset($_SESSION['user'])){
     header('location:index.php');
   }else{
     $user = $_SESSION['user'];
+    $email = $_SESSION['email'];
   }
 
 }
@@ -67,7 +69,9 @@ if($_SERVER['REQUEST_METHOD'] != 'POST'){
   <div class="contenedor">
     <a href="logout.php">Cerrar sesión</a>
      <div class="datos">
+      
     <h2>Bienvenido/a <?php echo $user ?></h2>
+    <h3>El email que has proporcionado es : <?php echo $email ?></h3>
   </div>
   </div>
 </body>

@@ -100,7 +100,7 @@ button:hover {
     <form method="post" action="login.php">
 
     <label for="email">Nombre de usuario:</label>
-      <input type="email" id="username" name="username" placeholder="Introduce tu nombre de usuario" required>
+      <input type="text" id="username" name="username" placeholder="Introduce tu nombre de usuario" required>
 
 
       <label for="password">Contraseña:</label>
