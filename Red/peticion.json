@@ -1,0 +1,4 @@
+{
+  "type": "GET",
+  "call": "url/TV/TViD/associated"
+}
