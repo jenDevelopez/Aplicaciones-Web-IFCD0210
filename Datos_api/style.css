@@ -1,0 +1,36 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+  }
+
+body{
+  background-color: #111;
+  color: white;
+}
+
+
+
+
+h1{
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+ul{
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 85%;
+  margin-inline: auto;
+  list-style-type: none;
+  gap:.5rem;
+}
+
+li {
+  background-color: teal;
+  color: white;
+  padding:.5rem;
+  border-radius: 10px;
+}

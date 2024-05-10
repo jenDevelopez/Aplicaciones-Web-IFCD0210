@@ -3,5 +3,6 @@
     "files.autoSave": "afterDelay",
     "editor.tabSize": 2,
     "editor.fontFamily": "'JetBrainsMono NF', 'monospace', monospace",
-    "editor.fontLigatures": true
+    "editor.fontLigatures": true,
+    "livePreview.defaultPreviewPath": "/API/index.html"
 }
