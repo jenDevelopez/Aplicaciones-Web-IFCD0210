@@ -1,0 +1,9 @@
+
+POST https://jsonplaceholder.typicode.com/posts 
+
+Content-Type: application/json;
+{
+  "userId":5,
+  "title":"nueva nota para practicar",
+  "body":"contenido de la nota"
+}
