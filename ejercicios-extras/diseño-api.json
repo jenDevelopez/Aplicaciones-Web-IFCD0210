@@ -1,0 +1,80 @@
+{
+	"recursos": [
+		"usuarios",
+		"canciones",
+		"albumes",
+		"listas de reproduccion"
+	],
+	"actions": [
+		"GET",
+		"POST",
+		"PUT",
+		"DELETE"
+	],
+	"endpoints": {
+		"GET": [
+			"/usuarios",
+			"/usuarios/id",
+			"canciones",
+			"canciones/id",
+			"albumes",
+			"albumes/id",
+			"listas-de-reproduccion",
+			"listas-de-reproduccion/id",
+			"listas-de-reproduccion/id/canciones"
+		],
+		"POST": [
+			"/listas-de-reproduccion",
+			"/listas-de-reproduccion/canciones"
+		],
+		"PUT": [
+			"/usuarios/id"
+		],
+		"DELETE": [
+			"/listas-de-reproduccion/id/canciones/id_cancion",
+			"/listas-de-reproduccion"
+		]
+	},
+	"respuestas": [
+		{
+			"GET": [
+				{
+					"id": 1,
+					"nombre": "Pedro",
+					"email": "pedrope@correo.com",
+					"listas-de-reproduccion": [
+						"lista-1",
+						"lista-2"
+					]
+				},
+				{
+					"id": 2,
+					"nombre": "Pablo",
+					"email": "pablo@correo.com",
+					"listas-de-reproduccion": [
+						"lista-1",
+						"lista-2"
+					]
+				}
+			],
+			"POST": [
+				{
+					"id": 3,
+					"nombre": "Mi lista 1",
+					"id_usuario": 3
+				}
+			],
+			"PUT": [
+				{
+					"id_usuario": 5,
+					"nombre": "nuevo nombre de usuario",
+					"email": "email@correo.es",
+					"listas-de-reproduccion": [
+						"lista-1",
+						"lista-2"
+					]
+				}
+			]
+		}
+	]
+}
